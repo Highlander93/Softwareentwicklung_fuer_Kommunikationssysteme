@@ -1,0 +1,16 @@
+Code in C++ und C.
+- strukturierter Entwicklungsprozess.
+- Alles vom Lastenheft über Pflichtenheft und Quellcode dokumentieren.
+- Arduino programmieren
+- sketch.h heißt arduino.h
+- requirements in einer Liste dokumentieren
+-- z.B.: Was passiert wenn man Arduino an Strom anschließt.
+-- Was pasiert wenn Taster gedrückt wird
+--- Mit Verben wie "müssen", "kann", "darf" etc.
+- Eigenschaften der Peripherie. Z.B.: Farbe LED, Kippschalter, etc.
+- Spezifikation untergliedern
+-- Eigenschaften, Rquirements, Funktionen-Anforderungen
+- Was ist ein Aktor.
+-- Ist ein LED-Display ein Aktor?
+- Was ist ein Sensor.
+-- Ist ein Schalter ein Sensor?
