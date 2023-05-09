@@ -1,0 +1,10 @@
+Von C nach C++:
+Der größte Unterschied zwischen C und C++ sind die Objekte. 
+C++ ist aus C entstanden
+C++ versteht C aber C versteht nicht C++.
+
+Schritt 1: Was sind potentielle Objekte
+- Überlegen ob in C Variablen gibt die man als Attribute eines übergeordneten Objekts ansehen könnte.
+-- Zum Beispiel Variablen wie "Seite" und "Kapitel" und "Titel". Wenn diese Variablen zusammenspielen und ein reales Objekt (Buch) abbilden, so kann man in C++ ein Objekt namens "Buch" mit den Attributen erstellen
+- Gibt es mehrere Variablen die zueinander gehören könnten aber nicht zu allen?
+-- Könnten es mehrere Klassen geben?

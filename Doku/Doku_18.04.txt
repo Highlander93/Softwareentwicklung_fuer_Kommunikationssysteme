@@ -14,3 +14,25 @@ Code in C++ und C.
 -- Ist ein LED-Display ein Aktor?
 - Was ist ein Sensor.
 -- Ist ein Schalter ein Sensor?
+
+
+____________________________________________________
+
+
+Vorgehensweise von C nach C++
+Worauf achten?
+//globale Variablen in setup()
+Hardwarebeschreibung - Architektur - UML-Klassendiagrammen - 
+class sketch() - LED, Button Attribute der neuen Klasse
+lokale Attribute könnten Instanzenattribute werden.
+Objekte identifizieren ... Logik zweitrangig
+Klasse "Digitaler_Eingang"
+Klasse "Digitaler_Ausgang"
+!!!Typische Vorangehensweisen ausarbeiten!!!
+		!!Mustererkennung!!
+
+Spaceship - Projekt nach C++ migrieren
+PackageDiagramm UMLDiagramm zeichnen
+Wie migriert man von C nach C++
+
+Nächstes Treffen am 09.05 11:45Uhr
