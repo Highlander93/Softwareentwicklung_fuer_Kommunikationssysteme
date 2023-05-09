@@ -1,0 +1,12 @@
+Die Arduino Bibliotheken befinden sich auf meinem Mac innerhalb der Datei, die im Applications Ordern liegt.
+
+Der Pfad zur Main und Setup-Methode:
+
+/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/cores/arduino
+
+
+
+Frage:
+1) Soll ein PIN als eigene Klasse umgesetzt werden? -> Einarbeitung in die Arduino Bibliotheken notwendig
+
+2) Sketch-Klasse könnte Liste von Peripherals enthalten. LED implementiert Peripherie -> ggf polymorphie einsetzen -> dann sind Elemente im Sketch universell vom Typ peripheral und unbegrenzt einsetzbar.
