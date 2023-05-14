@@ -1,0 +1,4 @@
+Anhand der Zeichnung "Spaceship.png" wird folgendes benötigt:
+- 3 unabhängige LEDs
+- Einen Knopf
+- Ein Arduino mit mindestens 4 belegbaren Pins
