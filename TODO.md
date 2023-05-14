@@ -1,5 +1,4 @@
 Spaceship:
-- eine Requirementanalyse	
 - UML-Diagramme
 
 TasterLED:
