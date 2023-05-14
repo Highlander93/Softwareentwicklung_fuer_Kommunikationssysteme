@@ -1,87 +1,116 @@
-// Peripherie Interface
-class Peripheral {
-public:
-  virtual void setup() = 0; // Setup-Methode (reine virtuelle Funktion)
-};
+#include <iostream>
 
-// LED Klasse mit pin als Attribut
-class LED : public Peripheral {
+// Pin Definitions
+const int GREEN_LED_PIN = 3;
+const int RED1_LED_PIN = 4;
+const int RED2_LED_PIN = 5;
+const int PUSH_BUTTON_PIN = 2;
+
+class LED {
 private:
-  int pin;
+    int pin;
 
 public:
-  LED(int pin) : pin(pin) {}
-
-  void setup() {
-    pinMode(pin, OUTPUT);
-  }
-
-  void turnOn() {
-    digitalWrite(pin, HIGH);
-  }
-
-  void turnOff() {
-    digitalWrite(pin, LOW);
-  }
-};
-
-// Schalter Klasse
-class Switch : public Peripheral {
-private:
-  int pin;
-
-public:
-  Switch(int pin) : pin(pin) {}
-
-  void setup() {
-    pinMode(pin, INPUT);
-  }
-
-  bool isPressed() {
-    return digitalRead(pin) == HIGH;
-  }
-};
-
-// Sketch Klasse
-class Sketch {
-private:
-  LED ledRight;
-  LED ledMiddle;
-  LED ledLeft;
-  Switch button;
-
-public:
-  Sketch() : ledRight(3), ledMiddle(4), ledLeft(5), button(2) {}
-
-  void setup() {
-    ledRight.setup();
-    ledMiddle.setup();
-    ledLeft.setup();
-    button.setup();
-  }
-
-  void loop() {
-    if (!button.isPressed()) {
-      ledLeft.turnOff();
-      ledRight.turnOn();
-    } else {
-      ledRight.turnOff();
-      ledLeft.turnOff();
-      ledMiddle.turnOn();
-      delay(250);
-      ledLeft.turnOn();
-      ledMiddle.turnOff();
-      delay(250);
+    LED(int pinNumber) : pin(pinNumber) {
+        pinMode(pin, OUTPUT);
     }
-  }
+
+    void on() {
+        digitalWrite(pin, HIGH);
+    }
+
+    void off() {
+        digitalWrite(pin, LOW);
+    }
 };
 
-Sketch sketch;
+class Button {
+private:
+    int pin;
+
+public:
+    Button(int pinNumber) : pin(pinNumber) {
+        pinMode(pin, INPUT);
+    }
+
+    bool isPressed() {
+        return digitalRead(pin) == HIGH;
+    }
+};
+
+class SpaceshipInterface {
+private:
+    LED greenLED;
+    LED red1LED;
+    LED red2LED;
+    Button pushButton;
+
+    enum State { Ok, Alarm1, Alarm2 };
+    enum Event { None, AlarmOn, AlarmOff };
+
+    State state;
+    Event event;
+    int lastPushButtonState;
+
+public:
+    SpaceshipInterface(int greenPin, int red1Pin, int red2Pin, int buttonPin)
+        : greenLED(greenPin), red1LED(red1Pin), red2LED(red2Pin), pushButton(buttonPin) {
+    }
+
+    void setup() {
+        greenLED.on();
+        red1LED.off();
+        red2LED.off();
+
+        state = Ok;
+        event = None;
+        lastPushButtonState = 0;
+    }
+
+    void loop() {
+        int currentPushButtonState = pushButton.isPressed();
+
+        if (currentPushButtonState == lastPushButtonState) {
+            event = None;
+        } else {
+            if (currentPushButtonState == LOW) {
+                event = AlarmOff;
+            } else {
+                event = AlarmOn;
+            }
+            lastPushButtonState = currentPushButtonState;
+        }
+
+        if (state == Ok && event == AlarmOn) {
+            greenLED.off();
+            state = Alarm1;
+        } else if (state == Alarm1 && event == None) {
+            blink(red1LED);
+            state = Alarm2;
+        } else if (state == Alarm2 && event == None) {
+            blink(red2LED);
+            state = Alarm1;
+        } else if ((state == Alarm1 || state == Alarm2) && event == AlarmOff) {
+            state = Ok;
+            greenLED.on();
+        }
+    }
+
+    void blink(LED& led) {
+        static const int BLINK_DURATION_MS = 250;
+        led.on();
+        delay(BLINK_DURATION_MS);
+        led.off();
+        delay(BLINK_DURATION_MS);
+    }
+};
+
+SpaceshipInterface spaceship(GREEN_LED_PIN, RED1_LED_PIN, RED2_LED_PIN, PUSH_BUTTON_PIN);
 
 void setup() {
-  sketch.setup();
+    spaceship.setup();
 }
 
 void loop() {
-  sketch.loop();
+    spaceship.loop();
 }
