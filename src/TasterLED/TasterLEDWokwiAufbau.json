@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "author": "",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 230.83,
+      "left": 280,
+      "attrs": { "color": "green", "bounce": "0" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 230,
+      "left": 200,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "uno:GND.3", "r1:1", "black", [ "v0" ] ],
+    [ "r1:2", "btn1:1.l", "black", [ "v0" ] ],
+    [ "uno:2", "btn1:1.r", "green", [ "v-34.58", "h115.8", "v268.58" ] ],
+    [ "uno:5V", "btn1:2.l", "red", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
