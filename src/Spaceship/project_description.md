@@ -6,9 +6,8 @@ Wenn Taster los gelassen wird höre die linke und mittlere LED auf zu blinken un
 
 Anwendungsfälle:
 
-1.1: Arduino wird angeschaltet (Nichts wird gedrückt):
+1.1: Arduino wird angeschaltet (Nichts wird gedrückt), dann leuchtet die rechte rote LED permanent.
 
-      ->  rechte rote LED leuchtet permanent
 	
 1.2: Taster wird gedrückt:
 
