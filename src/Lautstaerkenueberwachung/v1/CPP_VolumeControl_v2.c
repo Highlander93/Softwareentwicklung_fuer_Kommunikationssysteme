@@ -44,11 +44,11 @@ public:
 
 enum class VolumeLevel { UNDEFINED, OK, STILL_OK, TOO_LOUD };
 
-const int MIN_VOLUME = 30; //in dB
-const int MAX_VOLUME = 110; //in dB
-const int MAX_ANALOG_IN = 1023;
-const int PLEASANT_THRESHOLD = 60; //in dB
-const int HEARING_DAMAGE_THRESHOLD = 90; // in dB
+constexpr int MIN_VOLUME = 30; //in dB
+constexpr int MAX_VOLUME = 110; //in dB
+constexpr int MAX_ANALOG_IN = 1023;
+constexpr int PLEASANT_THRESHOLD = 60; //in dB
+constexpr int HEARING_DAMAGE_THRESHOLD = 90; // in dB
 
 class VolumeControl {
 private:
@@ -133,10 +133,10 @@ private:
 };
 
 // Pin definitions
-const int POTENTIOMETER_PIN = A0;
-const int GREEN_LED_PIN = 4;
-const int YELLOW_LED_PIN = 5;
-const int RED_LED_PIN = 6;
+constexpr int POTENTIOMETER_PIN = A0;
+constexpr int GREEN_LED_PIN = 4;
+constexpr int YELLOW_LED_PIN = 5;
+constexpr int RED_LED_PIN = 6;
 
 VolumeControl volumeControl(POTENTIOMETER_PIN, GREEN_LED_PIN, YELLOW_LED_PIN, RED_LED_PIN);
 
