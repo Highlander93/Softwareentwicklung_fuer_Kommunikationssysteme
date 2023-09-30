@@ -1,3 +1,4 @@
+// C-Code so small, c++ is exact the same like the C-code.
 /* filename: InterruptLedOnOff.ino */
 static const int LED_PIN = LED_BUILTIN;
 static volatile int buttonPressedEvent = 0;
